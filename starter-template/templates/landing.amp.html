@@ -39,6 +39,7 @@ limitations under the License.
   <script custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js" async=""></script>
   <script custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js" async=""></script>
   <script custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js" async=""></script>
+  <script custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js" async=""></script>
 
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat:400,500,600,700|Crimson+Text:400,600" rel="stylesheet">
 
@@ -206,56 +207,16 @@ limitations under the License.
   <!-- End Navbar -->
 
     <section class="amp-pwa-hero-container mx-auto mb3 relative overflow-hidden">
-      <div class="amp-pwa-hero-left absolute">
-        <amp-carousel id="amp-pwa-hero-left" class="amp-pwa-hero-carousel mx-auto" width="1290" height="680" layout="responsive" [slide]="selectedSlide" on="slideChange:AMP.setState({selectedSlide: event.index})" noloading="" controls="" loop="" type="slides">
-          <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Bold Coast Cottage" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/maine.jpg">
-            </amp-img>
-            <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Interiors</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Bold Coast Cottage in Main</a></h1>
-              <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                My travels in Main have taken me to many destinations<br>not in the standard visitor’s guide.
-              </p>
-              <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
-            </div>
-          </div>
-          <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-bottom" alt="Designer Kim Myeong" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/shoe-designer.jpg">
-            </amp-img>
-            <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Designer Kim Myeong</a></h1>
-              <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Relatively new to the industry, footwear designer Kim Myeong uses a unique<br>mix of color, texture, and material to make her shoes the must-haves of this year.
-              </p>
-              <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
-            </div>
-          </div>
-          <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Skykomish River Valley " width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/paul-summers.jpg">
-            </amp-img>
-            <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Nature's Inspiration</a></h1>
-              <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Habitant lobortis dolor, dictumst feugiat pede diam, minim turpis ut, quam<br>sociosqu egestas sed lorem auctor dui. Venenatis deserunt nulla.
-              </p>
-              <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
-            </div>
-          </div>
-        </amp-carousel>
-      </div>
       <div class="amp-pwa-hero-main mx-auto">
         <amp-carousel id="amp-pwa-hero-main" class="amp-pwa-hero-carousel mx-auto" media="(min-width: 40.06rem)" width="1290" height="680" layout="responsive" [slide]="selectedSlide" on="slideChange:AMP.setState({selectedSlide: event.index})" noloading="" controls="" loop="" type="slides">
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-bottom" alt="Designer Kim Myeong" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/shoe-designer.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-bottom" alt="Hipster Ipsum" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/amish-hipsters.png">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Designer Kim Myeong</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Hipsterism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Hipster Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Relatively new to the industry, footwear designer Kim Myeong uses a unique<br>mix of color, texture, and material to make her shoes the must-haves of this year.
+                The classic Ipsum featuring bacon, mustachios, craft cocktails, and vinyl collections served in palette-wood containers.
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
@@ -264,22 +225,22 @@ limitations under the License.
             <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Skykomish River Valley " width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/paul-summers.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Nature's Inspiration</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Trumpism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Trump Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Habitant lobortis dolor, dictumst feugiat pede diam, minim turpis ut, quam<br>sociosqu egestas sed lorem auctor dui. Venenatis deserunt nulla.
+                The best ipsum, believe me. More bigly than other tiny-handed ipsums. SAD!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
           </div>
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Bold Coast Cottage" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/maine.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Samuel Ipsum" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/maine.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Interiors</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Bold Coast Cottage in Main</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Shouting Matches</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Samuel Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                My travels in Main have taken me to many destinations<br>not in the standard visitor’s guide.
+                Say ipsum again!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
@@ -289,13 +250,13 @@ limitations under the License.
       <div class="amp-pwa-hero-main mx-auto">
         <amp-carousel id="amp-pwa-hero-main-small" class="amp-pwa-hero-carousel mx-auto" media="(max-width: 40rem)" width="auto" height="570" layout="fixed-height" [slide]="selectedSlide" on="slideChange:AMP.setState({selectedSlide: event.index})" noloading="" controls="" loop="" type="slides">
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Designer Kim Myeong" width="auto" height="278" layout="fixed-height" src="../img/amp-pwa/content/shoe-designer-centered.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Hipster Ipsum" width="auto" height="278" layout="fixed-height" src="../img/amp-pwa/content/amish-hipsters.png">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 ">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Designer<br>Kim Myeong</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Hipsterism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Hipster Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Relatively new to the industry, footwear designer Kim Myeong uses a unique mix of color, texture, and material to make her shoes the must-haves of this year.
+                The classic Ipsum featuring bacon, mustachios, craft cocktails, and vinyl collections served in palette-wood containers.
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
@@ -304,22 +265,22 @@ limitations under the License.
             <amp-img class="cover amp-pwa-hero-image" alt="Skykomish River Valley " width="auto" height="278" layout="fixed-height" src="../img/amp-pwa/content/paul-summers.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 ">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Nature's Inspiration</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Trumpism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Trump Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Habitant lobortis dolor, dictumst feugiat pede diam, minim turpis ut, quam sociosqu egestas sed lorem auctor dui. Venenatis deserunt nulla.
+                The best ipsum, believe me. More bigly than other tiny-handed ipsums. SAD!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
           </div>
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Bold Coast Cottage" width="auto" height="278" layout="fixed-height" src="../img/amp-pwa/content/maine.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Samuel Ipsum" width="auto" height="278" layout="fixed-height" src="../img/amp-pwa/content/maine.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 ">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Interiors</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Bold Coast Cottage in Main</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Shouting Matches</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Samuel Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                My travels in Main have taken me to many destinations not in the standard visitor’s guide.
+                Say ipsum again!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
@@ -346,34 +307,34 @@ limitations under the License.
             <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Skykomish River Valley " width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/paul-summers.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Nature's Inspiration</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Trumpism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Trump Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Habitant lobortis dolor, dictumst feugiat pede diam, minim turpis ut, quam<br>sociosqu egestas sed lorem auctor dui. Venenatis deserunt nulla.
+                The best ipsum, believe me. More bigly than other tiny-handed ipsums. SAD!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
           </div>
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Bold Coast Cottage" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/maine.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-top" alt="Samuel Ipsum" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/maine.jpg">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Interiors</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Bold Coast Cottage in Main</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;interiors#amp-pwa-interiors">Shouting Matches</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Samuel Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                My travels in Main have taken me to many destinations<br>not in the standard visitor’s guide.
+                Say ipsum again!
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
           </div>
           <div class="amp-pwa-hero-content mx-auto relative">
-            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-bottom" alt="Designer Kim Myeong" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/shoe-designer.jpg">
+            <amp-img class="cover amp-pwa-hero-image amp-pwa-cover-position-bottom" alt="Hipster Ipsum" width="1290" height="680" layout="responsive" src="../img/amp-pwa/content/amish-hipsters.png">
             </amp-img>
             <div class="amp-pwa-hero-typography mx-auto center z2 absolute">
-              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
-              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Designer Kim Myeong</a></h1>
+              <a class="amp-pwa-post-category amp-pwa-page-navigation underline caps max-width-1 sm-hide md-hide lg-hide" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Hipsterism</a>
+              <h1 class="amp-pwa-hero-title ampstart-title-md"><a class="text-decoration-none" href="kim-myeong.amp.html">Hipster Ipsum</a></h1>
               <p class="amp-pwa-hero-caption ampstart-caption mx-auto max-width-3 pt1 mb3">
-                Relatively new to the industry, footwear designer Kim Myeong uses a unique<br>mix of color, texture, and material to make her shoes the must-haves of this year.
+                The classic Ipsum featuring bacon, mustachios, craft cocktails, and vinyl collections served in palette-wood containers.
               </p>
               <a class="amp-pwa-hero-button text-decoration-none relative" href="kim-myeong.amp.html">Read More</a>
             </div>
@@ -406,36 +367,36 @@ limitations under the License.
                 <amp-img class="amp-pwa-post-image cover" alt="Studio Serif, interior." media="" width="409" height="305" layout="responsive" src="../img/amp-pwa/content/studio-310px.jpg">
                 </amp-img>
             </a>
-            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">Office Tour: Studio Serif</a></h4>
-            <p class="ampstart-caption pt1 pb3">In the heart of the southeast, Studio Serif stands out among its competitors for its complex mixture of hand-drawn and computer-generated art coming together in beautifully, cohesive designs.</p>
+            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Trumpism</a>
+            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">Office Tour: the White House</a></h4>
+            <p class="ampstart-caption pt1 pb3">I write the best placeholder text, and I'm the biggest developer on the web by far.</p>
           </li>
           <li class="px1 mt1 block align-top amp-pwa-pre-animate amp-pwa-post-item amp-pwa-post-item-wide amp-pwa-post-featured col amp-pwa-recent">
             <a href="kim-myeong.amp.html" class="text-decoration-none">
                 <amp-img class="amp-pwa-post-image cover" alt="Build a killer outfit." media="" width="409" height="370" layout="responsive" src="../img/amp-pwa/content/retail-shop-370px.jpg">
                 </amp-img>
             </a>
-            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
+            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Hipsterism</a>
             <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">New Textile &amp; Basics Shop Opens in Soho</a></h4>
-            <p class="ampstart-caption pt1 pb3">Everyone’s wardrobe needs the well-fitting, structured, and neutral basics to provide the start for the building of a killer outfit.</p>
+            <p class="ampstart-caption pt1 pb3">Cardigan heirloom hoodie poutine fanny pack mustache XOXO. Tote bag dreamcatcher wolf austin franzen raw denim tofu. </p>
           </li>
           <li class="px1 mt1 block align-top amp-pwa-pre-animate amp-pwa-post-item amp-pwa-post-item-wide col col-6 amp-pwa-recent">
             <a href="kim-myeong.amp.html" class="text-decoration-none">
                 <amp-img class="amp-pwa-post-image cover" alt="Feel the sand on your feet, not your wardrobe weight." media="" width="409" height="370" layout="responsive" src="../img/amp-pwa/content/travel-accessories-outfits-2-400px.jpg">
                 </amp-img>
             </a>
-            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Fashion</a>
-            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">How to Pack Light When Traveling</a></h4>
-            <p class="ampstart-caption pt1 pb3">Whether it’s a short weekend getaway or an extended holiday, choosing carefully from your accessories can help lighten your load while expanding your repertory.</p>
+            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;fashion#amp-pwa-fashion">Shouting Matches</a>
+            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">Threatening Your Adversaries with Biblical Quotes</h4>
+            <p class="ampstart-caption pt1 pb3">You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder.</p>
           </li>
           <li class="px1 mt1 block align-top amp-pwa-pre-animate amp-pwa-post-item amp-pwa-post-item-wide col col-6 amp-pwa-recent">
             <a href="kim-myeong.amp.html" class="text-decoration-none">
                 <amp-img class="amp-pwa-post-image cover" alt="Epression of aesthetics." media="" width="409" height="305" layout="responsive" src="../img/amp-pwa/content/timeless-design-350px.jpg">
                 </amp-img>
             </a>
-            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Design</a>
-            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">Timeless Design: A History of Watches</a></h4>
-            <p class="ampstart-caption pt1 pb3">A fashionable timepiece is as much a bold statement of one’s individuality, an expression of aesthetics, as it is an implement of progress.</p>
+            <a class="amp-pwa-post-category amp-pwa-page-navigation inline-block pt1 underline caps" href="stories.amp.html?category&#x3D;design#amp-pwa-design">Trumpism</a>
+            <h4 class="amp-pwa-post-title ampstart-title-sm pt1"><a class="text-decoration-none" href="kim-myeong.amp.html">Timeless Trumpism: A History of Gaudy Wristwear</a></h4>
+            <p class="ampstart-caption pt1 pb3">We have so many things that we have to do better... and certainly ipsum is one of them. We are going to make placeholder text great again.</p>
           </li>
         </ul>
         <div class="absolute z4 xs-hide sm-hide amp-pwa-recent-accent-image">
