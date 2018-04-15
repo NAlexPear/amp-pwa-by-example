@@ -1,0 +1,27 @@
+{
+  "name": "amp-pwa-by-example",
+  "version": "1.0.0",
+  "description": "A step-by-step PWA + AMP example",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/NAlexPear/amp-pwa-by-example.git"
+  },
+  "keywords": [
+    "AMP",
+    "PWA"
+  ],
+  "author": "Alex Pearson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NAlexPear/amp-pwa-by-example/issues"
+  },
+  "homepage": "https://github.com/NAlexPear/amp-pwa-by-example#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
