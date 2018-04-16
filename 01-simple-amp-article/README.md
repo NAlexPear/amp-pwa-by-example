@@ -4,4 +4,4 @@ This version is a naive implementation of AMPs connected by another AMP-driven h
 
 Because in-app requests aren't going out to the AMP cache, the additional overhead of the AMP toolchain is actually slightly _slower_ than the raw HTML version would have been.
 
-This example could, perhaps, be improved by linking content to the Google AMP Cache'd versions directly, but that would require that all links be cached by the AMP cache instantly across the application.
+This example could, perhaps, be improved by linking content to the Google AMP Cache'd versions directly, but that would require that all links be cached by the AMP cache instantly across the application... and even this strategy would not be as fast a pre-fetching or caching those additional resources, as is done in later examples in the repo.
