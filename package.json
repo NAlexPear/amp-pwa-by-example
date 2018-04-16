@@ -2,9 +2,10 @@
   "name": "amp-pwa-by-example",
   "version": "1.0.0",
   "description": "A step-by-step PWA + AMP example",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "serve": "http-server .",
+    "dev": "nodemon server.js",
+    "serve": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +22,9 @@
     "url": "https://github.com/NAlexPear/amp-pwa-by-example/issues"
   },
   "homepage": "https://github.com/NAlexPear/amp-pwa-by-example#readme",
-  "devDependencies": {
-    "http-server": "^0.11.1"
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-promise-router": "^3.0.2",
+    "nodemon": "^1.17.3"
   }
 }

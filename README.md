@@ -8,4 +8,4 @@ The accompanying presentation can be found [here](https://presentations.alexpear
 
 ## Running the Examples
 
-All examples can be run with `npm run serve` from the home directory. Each step in the example can be found by navigating to an `examples/:example_id` URL at `localhost:8080`
+All examples can be run without file-watching with `npm run serve` from the home directory. For a file-watching setup suitable for development, use `npm run dev`. Each step in the example can be found by navigating to an `examples/:example_id` URL at `localhost:8080`
