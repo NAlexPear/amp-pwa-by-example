@@ -7,20 +7,18 @@
 <head>
   <meta charset="utf-8">
   <title>Celebrity News Article</title>
+
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <!-- ## Setup -->
-  <!--
-        All additionally used AMP components must be imported in the header.
-      -->
+
   <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
   <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
   <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+  <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
   <link rel="canonical" href="https://ampbyexample.com/samples_templates/news_article/">
   <link rel="manifest" href="./manifest.json">
 
@@ -119,6 +117,10 @@
 
 </head>
 <body>
+  <amp-install-serviceworker
+      src="./serviceworker.js"
+      layout="nodisplay">
+  </amp-install-serviceworker>
 
   <!-- -->
   <main>

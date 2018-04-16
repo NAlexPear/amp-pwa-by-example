@@ -18,5 +18,5 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "article.amp.html?launcher=true"
+  "start_url": "./article.amp.html?launcher=true"
 }
