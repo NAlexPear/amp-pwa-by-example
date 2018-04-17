@@ -23,9 +23,20 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log(event.request.url);
+  console.log('fetched resource ->', event.request.url);
 
   event.respondWith(
     caches.match(event.request).then((response) => response || fetch(event.request))
+  );
+});
+
+self.addEventListener('push', (event) => {
+  console.log('a push event was heard!');
+
+  event.waitUntil(
+    self.registration.showNotification(
+      'Behold, a push notification!',
+      { body: 'how does this appear on your device?' },
+    ),
   );
 });

@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const PromiseRouter = require('express-promise-router');
+const webPush = require('web-push');
 const AMPtoPWA = require('./03-amp-to-pwa/hub/dist/server').default;
 
 const app = express();
 const router = new PromiseRouter();
 const ampToPwaRouter = new PromiseRouter();
+const { publicKey, privateKey } = webPush.generateVAPIDKeys();
 const render = (body) => `
   <!doctype html>
   <html>
@@ -21,6 +23,26 @@ const render = (body) => `
   </html>
 `;
 
+// Set up push notifications
+webPush.setVapidDetails(
+  'http://localhost:8080',
+  publicKey,
+  privateKey,
+);
+
+app.get('/key', async (req, res) => res.send(publicKey));
+
+app.post('/push-notify', async (req, res) => {
+  const { subscription } = req.body;
+  const payload = null;
+  const options = {
+    TTL: req.body.ttl
+  };
+
+  await webPush.sendNotification(subscription, payload, options)
+
+  res.sendStatus(201);
+})
 
 // Static service for AMP-only implementations
 app.use(express.static(
