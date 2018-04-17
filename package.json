@@ -4,7 +4,9 @@
   "description": "A step-by-step PWA + AMP example",
   "main": "server.js",
   "scripts": {
+    "build": "webpack --config ./03-amp-to-pwa/webpack.config.js",
     "dev": "nodemon server.js",
+    "lint": "eslint",
     "serve": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,8 +25,25 @@
   },
   "homepage": "https://github.com/NAlexPear/amp-pwa-by-example#readme",
   "dependencies": {
+    "babel-preset-react": "^6.24.1",
     "express": "^4.16.3",
     "express-promise-router": "^3.0.2",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "webpack": "^4.5.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-react": "^1.0.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-react": "^7.7.0",
+    "webpack-cli": "^2.0.14"
   }
 }

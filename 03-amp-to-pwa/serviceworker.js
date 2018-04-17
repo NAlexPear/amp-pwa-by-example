@@ -11,9 +11,11 @@ self.addEventListener('install', (event) => {
         'https://cdn.ampproject.org/v0/amp-user-notification-0.1.js',
         'https://cdn.ampproject.org/v0/amp-list-0.1.js',
         'https://cdn.ampproject.org/v0/amp-mustache-0.1.js',
+        'https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js',
         'https://fonts.googleapis.com/css?family=Roboto',
-        './article.amp.html',
-        './hub.amp.html',
+        './article',
+        './hub',
+        './hub/dist/client.js',
         './related_articles.json',
       ]);
     })
