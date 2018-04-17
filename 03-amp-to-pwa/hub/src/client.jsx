@@ -1,6 +1,8 @@
-import { Page } from './components';
+/* eslint-disable no-plusplus, no-mixed-operators */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Page } from './components';
 
 
 ReactDOM.hydrate(<Page />, document.getElementById('root'));
@@ -11,12 +13,12 @@ ReactDOM.hydrate(<Page />, document.getElementById('root'));
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding)
-    .replace(/\-/g, '+')
+    .replace(/-/g, '+')
     .replace(/_/g, '/');
- 
+
   const rawData = window.atob(base64);
   const outputArray = new Uint8Array(rawData.length);
- 
+
   for (let i = 0; i < rawData.length; ++i) {
     outputArray[i] = rawData.charCodeAt(i);
   }
@@ -24,14 +26,14 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
-if('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./serviceworker.js');
 
-  (async () => {
+  (async () => { // eslint-disable-line consistent-return
     const registration = await navigator.serviceWorker.ready;
     const currentSubscription = await registration.pushManager.getSubscription();
 
-    if(currentSubscription){
+    if (currentSubscription) {
       return currentSubscription;
     }
 

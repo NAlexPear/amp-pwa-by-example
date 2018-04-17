@@ -8,26 +8,24 @@ const client = {
     filename: 'client.js',
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['env', {
-                targets: {
-                  node: "current",
-                },
-                loose: true,
-              }],
-              'react',
-            ]
-          },
+    rules: [{
+      test: /\.jsx?$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['env', {
+              targets: {
+                node: 'current',
+              },
+              loose: true,
+            }],
+            'react',
+          ],
         },
-      }
-    ]
+      },
+    }],
   },
   mode: 'development',
 };
@@ -37,8 +35,8 @@ const server = Object.assign({}, client, {
   output: {
     path: path.resolve(__dirname, './hub/dist'),
     filename: 'server.js',
-    libraryTarget: 'commonjs2'
-  }
+    libraryTarget: 'commonjs2',
+  },
 });
 
 
