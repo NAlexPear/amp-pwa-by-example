@@ -35,11 +35,8 @@ app.get('/key', async (req, res) => res.send(publicKey));
 app.post('/push-notify', async (req, res) => {
   const { subscription } = req.body;
   const payload = null;
-  const options = {
-    TTL: req.body.ttl
-  };
 
-  await webPush.sendNotification(subscription, payload, options)
+  await webPush.sendNotification(subscription, payload);
 
   res.sendStatus(201);
 })
