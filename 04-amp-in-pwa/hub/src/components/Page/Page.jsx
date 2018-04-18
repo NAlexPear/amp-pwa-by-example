@@ -14,7 +14,8 @@ const Page = () =>
   <Grid
     container
     direction='column'
-    justify='space-around'>
+    justify='space-around'
+    style={ { marginTop: '2rem' } }>
     <Grid item>
       <Typography
         gutterBottom

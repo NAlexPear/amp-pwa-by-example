@@ -71,8 +71,8 @@ ampToPwaRouter
 
 ampInPwaRouter
   .get(
-    '/hub',
-    async (req, res) => res.send(render(AMPinPWA.html, AMPinPWA.css)),
+    '/',
+    async (req, res) => res.send(AMPinPWA.default),
   )
   .get(
     '/article',

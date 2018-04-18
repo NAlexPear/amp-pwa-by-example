@@ -15,7 +15,6 @@ self.addEventListener('install', (event) => {
       'https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js',
       'https://fonts.googleapis.com/css?family=Roboto',
       './article',
-      './hub',
       './hub/dist/client.js',
       './related_articles.json',
     ]);

@@ -6,6 +6,7 @@ import {
   Typography,
 } from 'material-ui';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { items } from '../../../../related_articles.json';
 
 
@@ -17,11 +18,11 @@ const Article = ({ title, thumbnail }) =>
     <CardMedia image={ thumbnail } style={ { height: '150px' } } />
     <CardHeader title={ title }/>
     <CardActions>
-      <a href='./article'>
+      <Link to='./article'>
         <Typography variant='caption'>
           READ MORE
         </Typography>
-      </a>
+      </Link>
     </CardActions>
   </Card>;
 

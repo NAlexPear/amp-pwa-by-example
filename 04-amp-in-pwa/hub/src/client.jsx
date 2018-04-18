@@ -1,11 +1,16 @@
 /* eslint-disable no-plusplus, no-mixed-operators */
 
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Page } from './components';
+import App from './app.jsx';
 
+const BrowserApp = () =>
+  <BrowserRouter basename='/04-amp-in-pwa'>
+    <App />
+  </BrowserRouter>;
 
-ReactDOM.hydrate(<Page />, document.getElementById('root'));
+ReactDOM.hydrate(<BrowserApp />, document.getElementById('root'));
 
 // This function is needed because Chrome doesn't accept a base64 encoded string
 // as value for applicationServerKey in pushManager.subscribe yet
