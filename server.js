@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const PromiseRouter = require('express-promise-router');
@@ -32,6 +33,8 @@ webPush.setVapidDetails(
   publicKey,
   privateKey,
 );
+
+app.use(bodyParser.json());
 
 app.get('/key', async (req, res) => res.send(publicKey));
 

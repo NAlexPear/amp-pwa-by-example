@@ -39,17 +39,10 @@ if ('serviceWorker' in navigator) {
 
     const response = await fetch('/key');
     const publicKey = await response.text();
-    const subscription = await registration.pushManager.subscribe({
+
+    registration.pushManager.subscribe({
       userVisible: true,
       applicationServerKey: urlBase64ToUint8Array(publicKey),
-    });
-
-    fetch('/push-notify', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ subscription }),
     });
   })();
 }
