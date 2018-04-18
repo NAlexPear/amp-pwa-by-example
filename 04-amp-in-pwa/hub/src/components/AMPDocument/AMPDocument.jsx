@@ -1,4 +1,18 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
+function onClick(event) {
+  const { history } = this.props;
+  const { target } = event;
+
+  if (target.tagName === 'a') {
+    const { href } = target;
+
+    event.preventDefault();
+
+    history.push(href);
+  }
+}
 
 class AMPDocument extends Component {
   constructor(props) {
@@ -11,16 +25,20 @@ class AMPDocument extends Component {
     this.request = null;
     this.shadowAmp = null;
     this.shadowRoot = null;
+    this.onClick = onClick.bind(this);
   }
 
   componentDidMount() {
     const { src } = this.props;
 
+    this.container.addEventListener('click', this.onClick);
     this.fetchAndAttachAmpDoc(src);
   }
 
   componentWillUnmount() {
     this.closeShadowAmpDoc();
+
+    this.container.removeEventListener('click', this.onClick);
 
     if (this.request) {
       this.request = null;
@@ -78,4 +96,4 @@ class AMPDocument extends Component {
   }
 }
 
-export default AMPDocument;
+export default withRouter(AMPDocument);
