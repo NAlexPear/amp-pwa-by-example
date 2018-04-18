@@ -1,19 +1,46 @@
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  Typography,
+} from 'material-ui';
 import React from 'react';
+import { Button } from '../Button';
 
-function onClick() {
-  /* eslint-disable no-console */
-  console.log('button clicked!');
-}
 
 const Page = () =>
-  <main>
-    <h1>PWA Landing Page</h1>
-    <h2>This page is loaded up as a server-side-rendered React Component.</h2>
-    <p>Check out the dev tools and see for yourself!</p>
+  <Grid
+    container
+    direction='column'
+    justify='space-around'
+    style={ { height: '70vh' } }>
+    <Grid item>
+      <Typography
+        gutterBottom
+        variant='headline'>
+        PWA Landing Page
+      </Typography>
+      <Typography
+        gutterBottom
+        variant='title'>
+        This page is loaded up as a server-side-rendered React Component.
+      </Typography>
+      <Typography
+        gutterBottom
+        variant='body1'>
+        Check out the dev tools and see for yourself!
+      </Typography>
+    </Grid>
 
-    <h2>Push Notifications</h2>
-    <p>Are you on mobile? Click this button to get some push notifications.</p>
-    <button onClick={ onClick } type='button'>Notify Me!</button>
-  </main>;
+    <Card>
+      <CardHeader
+        subheader='Are you on mobile? Click this button to get some push notifications.'
+        title='Push Notifications'/>
+      <CardContent>
+        <Button />
+      </CardContent>
+    </Card>
+  </Grid>;
 
 export default Page;

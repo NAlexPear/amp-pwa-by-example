@@ -2,17 +2,20 @@ const express = require('express');
 const path = require('path');
 const PromiseRouter = require('express-promise-router');
 const webPush = require('web-push');
-const AMPtoPWA = require('./03-amp-to-pwa/hub/dist/server').default;
+const { html, css } = require('./03-amp-to-pwa/hub/dist/server');
 
 const app = express();
 const router = new PromiseRouter();
 const ampToPwaRouter = new PromiseRouter();
 const { publicKey, privateKey } = webPush.generateVAPIDKeys();
-const render = body => `
+const render = (body, styles) => `
   <!doctype html>
   <html>
     <head>
       <title>AMP + PWA Hub</title>
+      <style>
+        ${styles}
+      </style>
     </head>
     <body>
       <div id="root">
@@ -50,7 +53,7 @@ app.use(express.static(path.join(__dirname, '02-amp-with-pwa')));
 ampToPwaRouter
   .get(
     '/hub',
-    async (req, res) => res.send(render(AMPtoPWA)),
+    async (req, res) => res.send(render(html, css)),
   )
   .get(
     '/hub/dist/client.js',

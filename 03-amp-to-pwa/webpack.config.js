@@ -8,24 +8,26 @@ const client = {
     filename: 'client.js',
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['env', {
-              targets: {
-                node: 'current',
-              },
-              loose: true,
-            }],
-            'react',
-          ],
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['env', {
+                targets: {
+                  node: 'current',
+                },
+                loose: true,
+              }],
+              'react',
+            ],
+          },
         },
       },
-    }],
+    ],
   },
   mode: 'development',
 };
