@@ -104,7 +104,7 @@ eval("\n\nexports.__esModule = true;\n\nvar _Button = __webpack_require__(/*! ./
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Button = __webpack_require__(/*! ../Button */ \"./03-amp-to-pwa/hub/src/components/Button/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Page = () => _react2.default.createElement(\n  _materialUi.Grid,\n  {\n    container: true,\n    direction: 'column',\n    justify: 'space-around',\n    style: { height: '70vh' } },\n  _react2.default.createElement(\n    _materialUi.Grid,\n    { item: true },\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'headline' },\n      'PWA Landing Page'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'title' },\n      'This page is loaded up as a server-side-rendered React Component.'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'body1' },\n      'Check out the dev tools and see for yourself!'\n    )\n  ),\n  _react2.default.createElement(\n    _materialUi.Card,\n    null,\n    _react2.default.createElement(_materialUi.CardHeader, {\n      subheader: 'Are you on mobile? Click this button to get some push notifications.',\n      title: 'Push Notifications' }),\n    _react2.default.createElement(\n      _materialUi.CardContent,\n      null,\n      _react2.default.createElement(_Button.Button, null)\n    )\n  )\n);\n\nexports.default = Page;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Page/Page.jsx?");
+eval("\n\nexports.__esModule = true;\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Button = __webpack_require__(/*! ../Button */ \"./03-amp-to-pwa/hub/src/components/Button/index.js\");\n\nvar _RelatedArticles = __webpack_require__(/*! ../RelatedArticles */ \"./03-amp-to-pwa/hub/src/components/RelatedArticles/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Page = () => _react2.default.createElement(\n  _materialUi.Grid,\n  {\n    container: true,\n    direction: 'column',\n    justify: 'space-around' },\n  _react2.default.createElement(\n    _materialUi.Grid,\n    { item: true },\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'headline' },\n      'PWA Landing Page'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'title' },\n      'This page is loaded up as a server-side-rendered React Component.'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'body1' },\n      'Check out the dev tools and see for yourself!'\n    )\n  ),\n  _react2.default.createElement(\n    _materialUi.Card,\n    null,\n    _react2.default.createElement(_materialUi.CardHeader, {\n      subheader: 'Are you on mobile? Click this button to get some push notifications.',\n      title: 'Push Notifications' }),\n    _react2.default.createElement(\n      _materialUi.CardContent,\n      null,\n      _react2.default.createElement(_Button.Button, null)\n    )\n  ),\n  _react2.default.createElement(_RelatedArticles.RelatedArticles, null)\n);\n\nexports.default = Page;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Page/Page.jsx?");
 
 /***/ }),
 
@@ -117,6 +117,30 @@ eval("\n\nexports.__esModule = true;\n\nvar _materialUi = __webpack_require__(/*
 
 "use strict";
 eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page.jsx */ \"./03-amp-to-pwa/hub/src/components/Page/Page.jsx\");\n\nObject.defineProperty(exports, 'Page', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_Page).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Page/index.js?");
+
+/***/ }),
+
+/***/ "./03-amp-to-pwa/hub/src/components/RelatedArticles/RelatedArticles.jsx":
+/*!******************************************************************************!*\
+  !*** ./03-amp-to-pwa/hub/src/components/RelatedArticles/RelatedArticles.jsx ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nexports.__esModule = true;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _related_articles = __webpack_require__(/*! ../../../../related_articles.json */ \"./03-amp-to-pwa/related_articles.json\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst mapArticle = (props, index) => _react2.default.createElement(Article, _extends({ key: index }, props));\n\nconst Article = ({ title, thumbnail }) => _react2.default.createElement(\n  _materialUi.Card,\n  { style: { margin: '1rem' } },\n  _react2.default.createElement(_materialUi.CardMedia, { image: thumbnail, style: { height: '150px' } }),\n  _react2.default.createElement(_materialUi.CardHeader, { title: title }),\n  _react2.default.createElement(\n    _materialUi.CardActions,\n    null,\n    _react2.default.createElement(\n      'a',\n      { href: './article' },\n      _react2.default.createElement(\n        _materialUi.Typography,\n        { variant: 'caption' },\n        'READ MORE'\n      )\n    )\n  )\n);\n\nconst RelatedArticles = () => _related_articles.items.map(mapArticle);\n\nexports.default = RelatedArticles;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/RelatedArticles/RelatedArticles.jsx?");
+
+/***/ }),
+
+/***/ "./03-amp-to-pwa/hub/src/components/RelatedArticles/index.js":
+/*!*******************************************************************!*\
+  !*** ./03-amp-to-pwa/hub/src/components/RelatedArticles/index.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nexports.__esModule = true;\n\nvar _RelatedArticles = __webpack_require__(/*! ./RelatedArticles.jsx */ \"./03-amp-to-pwa/hub/src/components/RelatedArticles/RelatedArticles.jsx\");\n\nObject.defineProperty(exports, 'RelatedArticles', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_RelatedArticles).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/RelatedArticles/index.js?");
 
 /***/ }),
 
@@ -141,6 +165,17 @@ eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Pa
 
 "use strict";
 eval("\n\nexports.__esModule = true;\nexports.css = exports.html = undefined;\n\nvar _JssProvider = __webpack_require__(/*! react-jss/lib/JssProvider */ \"./node_modules/react-jss/lib/JssProvider.js\");\n\nvar _JssProvider2 = _interopRequireDefault(_JssProvider);\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"./node_modules/react-dom/server.browser.js\");\n\nvar _jss = __webpack_require__(/*! react-jss/lib/jss */ \"./node_modules/react-jss/lib/jss.js\");\n\nvar _styles = __webpack_require__(/*! material-ui/styles */ \"./node_modules/material-ui/styles/index.js\");\n\nvar _components = __webpack_require__(/*! ./components */ \"./03-amp-to-pwa/hub/src/components/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst sheetsRegistry = new _jss.SheetsRegistry();\nconst theme = (0, _styles.createMuiTheme)();\nconst generateClassName = (0, _styles.createGenerateClassName)();\n\nconst App = () => _react2.default.createElement(\n  _JssProvider2.default,\n  {\n    generateClassName: generateClassName,\n    registry: sheetsRegistry },\n  _react2.default.createElement(\n    _styles.MuiThemeProvider,\n    { theme: theme, sheetsManager: new Map() },\n    _react2.default.createElement(_components.Page, null)\n  )\n);\n\nconst html = (0, _server.renderToString)(_react2.default.createElement(App, null));\nconst css = sheetsRegistry.toString();\n\nexports.html = html;\nexports.css = css;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/server.jsx?");
+
+/***/ }),
+
+/***/ "./03-amp-to-pwa/related_articles.json":
+/*!*********************************************!*\
+  !*** ./03-amp-to-pwa/related_articles.json ***!
+  \*********************************************/
+/*! exports provided: items, default */
+/***/ (function(module) {
+
+eval("module.exports = {\"items\":[{\"title\":\"More Image Galleries\",\"thumbnail\":\"//via.placeholder.com/150x150\",\"url\":\"./hub\"},{\"title\":\"How about some recipes?\",\"thumbnail\":\"//via.placeholder.com/150x150\",\"url\":\"./hub\"},{\"title\":\"More Celebrity Articles\",\"thumbnail\":\"//via.placeholder.com/150x150\",\"url\":\"./hub\"}]};\n\n//# sourceURL=webpack:///./03-amp-to-pwa/related_articles.json?");
 
 /***/ }),
 

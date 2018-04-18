@@ -7,14 +7,14 @@ import {
 } from 'material-ui';
 import React from 'react';
 import { Button } from '../Button';
+import { RelatedArticles } from '../RelatedArticles';
 
 
 const Page = () =>
   <Grid
     container
     direction='column'
-    justify='space-around'
-    style={ { height: '70vh' } }>
+    justify='space-around'>
     <Grid item>
       <Typography
         gutterBottom
@@ -41,6 +41,8 @@ const Page = () =>
         <Button />
       </CardContent>
     </Card>
+
+    <RelatedArticles />
   </Grid>;
 
 export default Page;
