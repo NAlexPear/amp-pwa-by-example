@@ -80,7 +80,31 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(/*! react-router */ \"./node_modules/react-router/es/index.js\");\n\nvar _components = __webpack_require__(/*! ./components */ \"./04-amp-in-pwa/hub/src/components/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst App = () => _react2.default.createElement(\n  _components.Shell,\n  null,\n  _react2.default.createElement(\n    _reactRouter.Switch,\n    null,\n    _react2.default.createElement(_reactRouter.Route, { exact: true, path: '/', component: _components.Page }),\n    _react2.default.createElement(_reactRouter.Route, { path: 'article', component: () => _react2.default.createElement(_components.AMPDocument, { src: '/article' }) })\n  )\n);\n\nexports.default = App;\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/app.jsx?");
+eval("\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouter = __webpack_require__(/*! react-router */ \"./node_modules/react-router/es/index.js\");\n\nvar _components = __webpack_require__(/*! ./components */ \"./04-amp-in-pwa/hub/src/components/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst App = () => _react2.default.createElement(\n  _components.Shell,\n  null,\n  _react2.default.createElement(\n    _reactRouter.Switch,\n    null,\n    _react2.default.createElement(_reactRouter.Route, { exact: true, path: '/', component: _components.Page }),\n    _react2.default.createElement(_reactRouter.Route, { path: '/article', component: () => _react2.default.createElement(_components.AMPDocument, { src: './article' }) })\n  )\n);\n\nexports.default = App;\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/app.jsx?");
+
+/***/ }),
+
+/***/ "./04-amp-in-pwa/hub/src/components/AMPDocument/AMPDocument.jsx":
+/*!**********************************************************************!*\
+  !*** ./04-amp-in-pwa/hub/src/components/AMPDocument/AMPDocument.jsx ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nclass AMPDocument extends _react.Component {\n  constructor(props) {\n    super(props);\n\n    this.ampReadyPromise = new Promise(resolve => {\n      (window.AMP = window.AMP || []).push(resolve);\n    });\n    this.container = null;\n    this.request = null;\n    this.shadowAmp = null;\n    this.shadowRoot = null;\n  }\n\n  componentDidMount() {\n    const { src } = this.props;\n\n    this.fetchAndAttachAmpDoc(src);\n  }\n\n  componentWillUnmount() {\n    this.closeShadowAmpDoc();\n\n    if (this.request) {\n      this.request = null;\n    }\n  }\n\n  componentWillReceiveProps({ src }) {\n    this.fetchAndAttachAmpDoc(src);\n  }\n\n  render() {\n    return _react2.default.createElement('div', { className: 'amp-container', ref: ref => {\n        this.container = ref;\n      } });\n  }\n\n  fetchAmpDoc(url) {\n    // unfortunately fetch() does not support retrieving documents,\n    // so we have to resort to good old XMLHttpRequest.\n    const xhr = new XMLHttpRequest();\n\n    this.request = new Promise(resolve => {\n      xhr.open('GET', url, true);\n      xhr.responseType = 'document';\n      xhr.setRequestHeader('Accept', 'text/html');\n      xhr.onload = () => {\n        resolve(xhr.responseXML);\n      };\n      xhr.send();\n    });\n\n    return this.request;\n  }\n\n  async fetchAndAttachAmpDoc(url) {\n    const doc = await this.fetchAmpDoc(url);\n    const amp = await this.ampReadyPromise;\n    const oldShadowRoot = this.shadowRoot;\n\n    this.shadowRoot = document.createElement('div');\n\n    if (oldShadowRoot) {\n      this.container.replaceChild(this.shadowRoot, oldShadowRoot);\n    } else {\n      this.container.appendChild(this.shadowRoot);\n    }\n\n    // Attach the shadow document to the new shadow root.\n    this.shadowAmp = amp.attachShadowDoc(this.shadowRoot, doc, url);\n  }\n\n  closeShadowAmpDoc() {\n    if (typeof this.shadowAmp.close === 'function') {\n      this.shadowAmp.close();\n    }\n  }\n}\n\nexports.default = AMPDocument;\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/AMPDocument/AMPDocument.jsx?");
+
+/***/ }),
+
+/***/ "./04-amp-in-pwa/hub/src/components/AMPDocument/index.js":
+/*!***************************************************************!*\
+  !*** ./04-amp-in-pwa/hub/src/components/AMPDocument/index.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nexports.__esModule = true;\n\nvar _AMPDocument = __webpack_require__(/*! ./AMPDocument.jsx */ \"./04-amp-in-pwa/hub/src/components/AMPDocument/AMPDocument.jsx\");\n\nObject.defineProperty(exports, 'AMPDocument', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_AMPDocument).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/AMPDocument/index.js?");
 
 /***/ }),
 
@@ -188,7 +212,7 @@ eval("\n\nexports.__esModule = true;\n\nvar _Shell = __webpack_require__(/*! ./S
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page */ \"./04-amp-in-pwa/hub/src/components/Page/index.js\");\n\nObject.keys(_Page).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Page[key];\n    }\n  });\n});\n\nvar _Shell = __webpack_require__(/*! ./Shell */ \"./04-amp-in-pwa/hub/src/components/Shell/index.js\");\n\nObject.keys(_Shell).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Shell[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/index.js?");
+eval("\n\nexports.__esModule = true;\n\nvar _AMPDocument = __webpack_require__(/*! ./AMPDocument */ \"./04-amp-in-pwa/hub/src/components/AMPDocument/index.js\");\n\nObject.keys(_AMPDocument).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _AMPDocument[key];\n    }\n  });\n});\n\nvar _Page = __webpack_require__(/*! ./Page */ \"./04-amp-in-pwa/hub/src/components/Page/index.js\");\n\nObject.keys(_Page).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Page[key];\n    }\n  });\n});\n\nvar _Shell = __webpack_require__(/*! ./Shell */ \"./04-amp-in-pwa/hub/src/components/Shell/index.js\");\n\nObject.keys(_Shell).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Shell[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/index.js?");
 
 /***/ }),
 

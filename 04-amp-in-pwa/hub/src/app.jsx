@@ -13,8 +13,8 @@ const App = () =>
   <Shell>
     <Switch>
       <Route exact path='/' component={ Page } />
-      <Route path='article' component={
-        () => <AMPDocument src='/article'/>
+      <Route path='/article' component={
+        () => <AMPDocument src='./article'/>
       }/>
     </Switch>
   </Shell>;

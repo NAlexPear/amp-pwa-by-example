@@ -16,13 +16,11 @@ class AMPDocument extends Component {
   componentDidMount() {
     const { src } = this.props;
 
-    this.container.addEventListener('click', this.onClick);
     this.fetchAndAttachAmpDoc(src);
   }
 
   componentWillUnmount() {
     this.closeShadowAmpDoc();
-    this.container.removeEventListener('click', this.onClick);
 
     if (this.request) {
       this.request = null;
@@ -39,8 +37,26 @@ class AMPDocument extends Component {
     );
   }
 
+  fetchAmpDoc(url) {
+    // unfortunately fetch() does not support retrieving documents,
+    // so we have to resort to good old XMLHttpRequest.
+    const xhr = new XMLHttpRequest();
+
+    this.request = new Promise((resolve) => {
+      xhr.open('GET', url, true);
+      xhr.responseType = 'document';
+      xhr.setRequestHeader('Accept', 'text/html');
+      xhr.onload = () => {
+        resolve(xhr.responseXML);
+      };
+      xhr.send();
+    });
+
+    return this.request;
+  }
+
   async fetchAndAttachAmpDoc(url) {
-    const doc = await fetch(url);
+    const doc = await this.fetchAmpDoc(url);
     const amp = await this.ampReadyPromise;
     const oldShadowRoot = this.shadowRoot;
 
@@ -52,7 +68,6 @@ class AMPDocument extends Component {
       this.container.appendChild(this.shadowRoot);
     }
 
-    // Attach the shadow document to the new shadow root.
     this.shadowAmp = amp.attachShadowDoc(this.shadowRoot, doc, url);
   }
 
