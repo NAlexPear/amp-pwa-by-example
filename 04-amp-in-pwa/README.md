@@ -1,7 +1,5 @@
-## AMP as a PWA's data source
+## AMP to PWA
 
-Most web applications are built as a dynamic front-end that consumes an API (usually JSON). But if one extends the previous PWA-as-an-AMP-hub example, one could imagine a world where modular AMP pages are served directly in the context of a PWA as a single-page application.
+While adding a service worker and manifest were a big win for page speed and offline usability, there are still features that are unique to PWAs that can't be replicated by a service-worker-enabled AMP page. These include things like background sync-ing and push notifications.
 
-While this ties your content to the AMP spec, it also means that existing AMP content can be used to leverage the client-side performance benefits of the asynchronous, SPA experience without the maintenance of multiple back-ends.
-
-
+On top of these PWA-specific limitations, there are strong incentives for content-creators in the publishing industry to leverage the un-restricted features outside of AMP HTML to create their own fully-featured "hub" that's connected to discoverable AMP content, but that takes over the service of content from the origin once a user has interacted with a discovered piece of content for the first time. This model is represented here, as a "leaf" node/article that redirects to a fully-featured PWA as the user interacts with it.

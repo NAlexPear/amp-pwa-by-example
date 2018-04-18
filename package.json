@@ -4,7 +4,7 @@
   "description": "A step-by-step PWA + AMP example",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --config ./03-amp-to-pwa/webpack.config.js",
+    "build": "webpack --config ./03-amp-to-pwa/webpack.config.js && webpack --config ./04-amp-in-pwa/webpack.config.js",
     "dev": "nodemon server.js",
     "lint": "eslint",
     "serve": "node server.js",

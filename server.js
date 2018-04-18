@@ -3,11 +3,13 @@ const express = require('express');
 const path = require('path');
 const PromiseRouter = require('express-promise-router');
 const webPush = require('web-push');
-const { html, css } = require('./03-amp-to-pwa/hub/dist/server');
+const AMPtoPWA = require('./03-amp-to-pwa/hub/dist/server');
+const AMPinPWA = require('./04-amp-in-pwa/hub/dist/server');
 
 const app = express();
 const router = new PromiseRouter();
 const ampToPwaRouter = new PromiseRouter();
+const ampInPwaRouter = new PromiseRouter();
 const { publicKey, privateKey } = webPush.generateVAPIDKeys();
 const render = (body, styles) => `
   <!doctype html>
@@ -56,7 +58,7 @@ app.use(express.static(path.join(__dirname, '02-amp-with-pwa')));
 ampToPwaRouter
   .get(
     '/hub',
-    async (req, res) => res.send(render(html, css)),
+    async (req, res) => res.send(render(AMPtoPWA.html, AMPtoPWA.css)),
   )
   .get(
     '/hub/dist/client.js',
@@ -79,9 +81,40 @@ ampToPwaRouter
     async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/related_articles.json')),
   );
 
+ampInPwaRouter
+  .get(
+    '/hub',
+    async (req, res) => res.send(render(AMPinPWA.html, AMPinPWA.css)),
+  )
+  .get(
+    '/hub/dist/client.js',
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/hub/dist/client.js')),
+  )
+  .get(
+    '/article',
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/article.amp.html')),
+  )
+  .get(
+    '/serviceworker.js',
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/serviceworker.js')),
+  )
+  .get(
+    '/manifest.json',
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/manifest.json')),
+  )
+  .get(
+    '/related_articles.json',
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/related_articles.json')),
+  );
+
 router.use(
   '/03-amp-to-pwa',
   ampToPwaRouter,
+);
+
+router.use(
+  '/04-amp-in-pwa',
+  ampInPwaRouter,
 );
 
 app.use(router);

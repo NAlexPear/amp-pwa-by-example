@@ -66,80 +66,80 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./03-amp-to-pwa/hub/src/client.jsx");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./04-amp-in-pwa/hub/src/client.jsx");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./03-amp-to-pwa/hub/src/client.jsx":
+/***/ "./04-amp-in-pwa/hub/src/client.jsx":
 /*!******************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/client.jsx ***!
+  !*** ./04-amp-in-pwa/hub/src/client.jsx ***!
   \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _components = __webpack_require__(/*! ./components */ \"./03-amp-to-pwa/hub/src/components/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.hydrate(_react2.default.createElement(_components.Page, null), document.getElementById('root'));\n\n// This function is needed because Chrome doesn't accept a base64 encoded string\n// as value for applicationServerKey in pushManager.subscribe yet\n// https://bugs.chromium.org/p/chromium/issues/detail?id=802280\n/* eslint-disable no-plusplus, no-mixed-operators */\n\nfunction urlBase64ToUint8Array(base64String) {\n  const padding = '='.repeat((4 - base64String.length % 4) % 4);\n  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');\n\n  const rawData = window.atob(base64);\n  const outputArray = new Uint8Array(rawData.length);\n\n  for (let i = 0; i < rawData.length; ++i) {\n    outputArray[i] = rawData.charCodeAt(i);\n  }\n\n  return outputArray;\n}\n\nif ('serviceWorker' in navigator) {\n  navigator.serviceWorker.register('./serviceworker.js');\n\n  (async () => {\n    // eslint-disable-line consistent-return\n    const registration = await navigator.serviceWorker.ready;\n    const currentSubscription = await registration.pushManager.getSubscription();\n\n    if (currentSubscription) {\n      return currentSubscription;\n    }\n\n    const response = await fetch('/key');\n    const publicKey = await response.text();\n\n    registration.pushManager.subscribe({\n      userVisible: true,\n      applicationServerKey: urlBase64ToUint8Array(publicKey)\n    });\n  })();\n}\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/client.jsx?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _components = __webpack_require__(/*! ./components */ \"./04-amp-in-pwa/hub/src/components/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_reactDom2.default.hydrate(_react2.default.createElement(_components.Page, null), document.getElementById('root'));\n\n// This function is needed because Chrome doesn't accept a base64 encoded string\n// as value for applicationServerKey in pushManager.subscribe yet\n// https://bugs.chromium.org/p/chromium/issues/detail?id=802280\n/* eslint-disable no-plusplus, no-mixed-operators */\n\nfunction urlBase64ToUint8Array(base64String) {\n  const padding = '='.repeat((4 - base64String.length % 4) % 4);\n  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');\n\n  const rawData = window.atob(base64);\n  const outputArray = new Uint8Array(rawData.length);\n\n  for (let i = 0; i < rawData.length; ++i) {\n    outputArray[i] = rawData.charCodeAt(i);\n  }\n\n  return outputArray;\n}\n\nif ('serviceWorker' in navigator) {\n  navigator.serviceWorker.register('./serviceworker.js');\n\n  (async () => {\n    // eslint-disable-line consistent-return\n    const registration = await navigator.serviceWorker.ready;\n    const currentSubscription = await registration.pushManager.getSubscription();\n\n    if (currentSubscription) {\n      return currentSubscription;\n    }\n\n    const response = await fetch('/key');\n    const publicKey = await response.text();\n\n    registration.pushManager.subscribe({\n      userVisible: true,\n      applicationServerKey: urlBase64ToUint8Array(publicKey)\n    });\n  })();\n}\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/client.jsx?");
 
 /***/ }),
 
-/***/ "./03-amp-to-pwa/hub/src/components/Button/Button.jsx":
+/***/ "./04-amp-in-pwa/hub/src/components/Button/Button.jsx":
 /*!************************************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/components/Button/Button.jsx ***!
+  !*** ./04-amp-in-pwa/hub/src/components/Button/Button.jsx ***!
   \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nasync function onClick() {\n  const registration = await navigator.serviceWorker.ready;\n  const subscription = await registration.pushManager.getSubscription();\n\n  if (subscription && !this.pushRequest) {\n    this.pushRequest = await fetch('/push-notify', {\n      method: 'post',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({ subscription })\n    });\n\n    this.pushRequest = null;\n  }\n}\n\nclass PushButton extends _react.PureComponent {\n  constructor(props) {\n    super(props);\n\n    this.pushRequest = null;\n    this.onClick = onClick.bind(this);\n  }\n\n  render() {\n    return _react2.default.createElement(\n      _materialUi.Button,\n      {\n        onClick: this.onClick,\n        variant: 'raised' },\n      'Notify Me!'\n    );\n  }\n}\n\nexports.default = PushButton;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Button/Button.jsx?");
+eval("\n\nexports.__esModule = true;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nasync function onClick() {\n  const registration = await navigator.serviceWorker.ready;\n  const subscription = await registration.pushManager.getSubscription();\n\n  if (subscription && !this.pushRequest) {\n    this.pushRequest = await fetch('/push-notify', {\n      method: 'post',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({ subscription })\n    });\n\n    this.pushRequest = null;\n  }\n}\n\nclass PushButton extends _react.PureComponent {\n  constructor(props) {\n    super(props);\n\n    this.pushRequest = null;\n    this.onClick = onClick.bind(this);\n  }\n\n  render() {\n    return _react2.default.createElement(\n      _materialUi.Button,\n      {\n        onClick: this.onClick,\n        variant: 'raised' },\n      'Notify Me!'\n    );\n  }\n}\n\nexports.default = PushButton;\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/Button/Button.jsx?");
 
 /***/ }),
 
-/***/ "./03-amp-to-pwa/hub/src/components/Button/index.js":
+/***/ "./04-amp-in-pwa/hub/src/components/Button/index.js":
 /*!**********************************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/components/Button/index.js ***!
+  !*** ./04-amp-in-pwa/hub/src/components/Button/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _Button = __webpack_require__(/*! ./Button.jsx */ \"./03-amp-to-pwa/hub/src/components/Button/Button.jsx\");\n\nObject.defineProperty(exports, 'Button', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_Button).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Button/index.js?");
+eval("\n\nexports.__esModule = true;\n\nvar _Button = __webpack_require__(/*! ./Button.jsx */ \"./04-amp-in-pwa/hub/src/components/Button/Button.jsx\");\n\nObject.defineProperty(exports, 'Button', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_Button).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/Button/index.js?");
 
 /***/ }),
 
-/***/ "./03-amp-to-pwa/hub/src/components/Page/Page.jsx":
+/***/ "./04-amp-in-pwa/hub/src/components/Page/Page.jsx":
 /*!********************************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/components/Page/Page.jsx ***!
+  !*** ./04-amp-in-pwa/hub/src/components/Page/Page.jsx ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Button = __webpack_require__(/*! ../Button */ \"./03-amp-to-pwa/hub/src/components/Button/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Page = () => _react2.default.createElement(\n  _materialUi.Grid,\n  {\n    container: true,\n    direction: 'column',\n    justify: 'space-around',\n    style: { height: '70vh' } },\n  _react2.default.createElement(\n    _materialUi.Grid,\n    { item: true },\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'headline' },\n      'PWA Landing Page'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'title' },\n      'This page is loaded up as a server-side-rendered React Component.'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'body1' },\n      'Check out the dev tools and see for yourself!'\n    )\n  ),\n  _react2.default.createElement(\n    _materialUi.Card,\n    null,\n    _react2.default.createElement(_materialUi.CardHeader, {\n      subheader: 'Are you on mobile? Click this button to get some push notifications.',\n      title: 'Push Notifications' }),\n    _react2.default.createElement(\n      _materialUi.CardContent,\n      null,\n      _react2.default.createElement(_Button.Button, null)\n    )\n  )\n);\n\nexports.default = Page;\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Page/Page.jsx?");
+eval("\n\nexports.__esModule = true;\n\nvar _materialUi = __webpack_require__(/*! material-ui */ \"./node_modules/material-ui/index.es.js\");\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Button = __webpack_require__(/*! ../Button */ \"./04-amp-in-pwa/hub/src/components/Button/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Page = () => _react2.default.createElement(\n  _materialUi.Grid,\n  {\n    container: true,\n    direction: 'column',\n    justify: 'space-around',\n    style: { height: '70vh' } },\n  _react2.default.createElement(\n    _materialUi.Grid,\n    { item: true },\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'headline' },\n      'PWA Landing Page'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'title' },\n      'This page is loaded up as a server-side-rendered React Component.'\n    ),\n    _react2.default.createElement(\n      _materialUi.Typography,\n      {\n        gutterBottom: true,\n        variant: 'body1' },\n      'Check out the dev tools and see for yourself!'\n    )\n  ),\n  _react2.default.createElement(\n    _materialUi.Card,\n    null,\n    _react2.default.createElement(_materialUi.CardHeader, {\n      subheader: 'Are you on mobile? Click this button to get some push notifications.',\n      title: 'Push Notifications' }),\n    _react2.default.createElement(\n      _materialUi.CardContent,\n      null,\n      _react2.default.createElement(_Button.Button, null)\n    )\n  )\n);\n\nexports.default = Page;\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/Page/Page.jsx?");
 
 /***/ }),
 
-/***/ "./03-amp-to-pwa/hub/src/components/Page/index.js":
+/***/ "./04-amp-in-pwa/hub/src/components/Page/index.js":
 /*!********************************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/components/Page/index.js ***!
+  !*** ./04-amp-in-pwa/hub/src/components/Page/index.js ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page.jsx */ \"./03-amp-to-pwa/hub/src/components/Page/Page.jsx\");\n\nObject.defineProperty(exports, 'Page', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_Page).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/Page/index.js?");
+eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page.jsx */ \"./04-amp-in-pwa/hub/src/components/Page/Page.jsx\");\n\nObject.defineProperty(exports, 'Page', {\n  enumerable: true,\n  get: function () {\n    return _interopRequireDefault(_Page).default;\n  }\n});\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/Page/index.js?");
 
 /***/ }),
 
-/***/ "./03-amp-to-pwa/hub/src/components/index.js":
+/***/ "./04-amp-in-pwa/hub/src/components/index.js":
 /*!***************************************************!*\
-  !*** ./03-amp-to-pwa/hub/src/components/index.js ***!
+  !*** ./04-amp-in-pwa/hub/src/components/index.js ***!
   \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page */ \"./03-amp-to-pwa/hub/src/components/Page/index.js\");\n\nObject.keys(_Page).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Page[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./03-amp-to-pwa/hub/src/components/index.js?");
+eval("\n\nexports.__esModule = true;\n\nvar _Page = __webpack_require__(/*! ./Page */ \"./04-amp-in-pwa/hub/src/components/Page/index.js\");\n\nObject.keys(_Page).forEach(function (key) {\n  if (key === \"default\" || key === \"__esModule\") return;\n  Object.defineProperty(exports, key, {\n    enumerable: true,\n    get: function () {\n      return _Page[key];\n    }\n  });\n});\n\n//# sourceURL=webpack:///./04-amp-in-pwa/hub/src/components/index.js?");
 
 /***/ }),
 
