@@ -61,24 +61,12 @@ ampToPwaRouter
     async (req, res) => res.send(render(AMPtoPWA.html, AMPtoPWA.css)),
   )
   .get(
-    '/hub/dist/client.js',
-    async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/hub/dist/client.js')),
-  )
-  .get(
     '/article',
     async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/article.amp.html')),
   )
   .get(
-    '/serviceworker.js',
-    async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/serviceworker.js')),
-  )
-  .get(
-    '/manifest.json',
-    async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/manifest.json')),
-  )
-  .get(
-    '/related_articles.json',
-    async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa/related_articles.json')),
+    /\.js(on)?$/,
+    async (req, res) => res.sendFile(path.join(__dirname, '03-amp-to-pwa', req.path)),
   );
 
 ampInPwaRouter
@@ -87,24 +75,12 @@ ampInPwaRouter
     async (req, res) => res.send(render(AMPinPWA.html, AMPinPWA.css)),
   )
   .get(
-    '/hub/dist/client.js',
-    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/hub/dist/client.js')),
-  )
-  .get(
     '/article',
     async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/article.amp.html')),
   )
   .get(
-    '/serviceworker.js',
-    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/serviceworker.js')),
-  )
-  .get(
-    '/manifest.json',
-    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/manifest.json')),
-  )
-  .get(
-    '/related_articles.json',
-    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa/related_articles.json')),
+    /\.js(on)?$/,
+    async (req, res) => res.sendFile(path.join(__dirname, '04-amp-in-pwa', req.path)),
   );
 
 router.use(
